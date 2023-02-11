@@ -55,7 +55,7 @@ export default withMermaid(defineConfigWithTheme<ThemeConfig>({
     ['link', { rel: 'alternate icon', href: 'https://pic.imgdb.cn/item/63e6f0c24757feff33a84cba.jpg', type: 'image/png', sizes: '16x16' }],
     ['script', { src: "https://pic.imgdb.cn/item/63e6f0c24757feff33a84cba.jpg" }]
   ],
-  base: "/record/",
+  // base: "./",
   themeConfig: {
     me: {
       wechat: "/wechat2.png",
