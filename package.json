@@ -1,5 +1,5 @@
 {
-  "name": "fa-advanced-interview",
+  "name": "learning-record",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,7 +18,8 @@
     "pinyin": "3.0.0-alpha.4",
     "vitepress": "1.0.0-alpha.20",
     "vitepress-plugin-mermaid": "^2.0.8",
-    "vue": "^3.2.41"
+    "vue": "^3.2.41",
+    "@mermaid-js/mermaid-mindmap": "^9.2.0"
   },
   "keywords": [],
   "author": "",
