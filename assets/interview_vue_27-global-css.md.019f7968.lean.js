@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as s,a}from"./app.ef61e8c5.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/27-global-css.md"}'),o={name:"interview/vue/27-global-css.md"},c=a("p",null,"27-global-css",-1),n=[c];function r(l,_,i,d,p,m){return t(),s("div",null,n)}const v=e(o,[["render",r]]);export{f as __pageData,v as default};

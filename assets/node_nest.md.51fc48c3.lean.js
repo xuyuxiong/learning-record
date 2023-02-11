@@ -1,1 +1,0 @@
-import{_ as s,o as e,c as n,d as a}from"./app.8a62d772.js";const f=JSON.parse('{"title":"Nest","description":"","frontmatter":{},"headers":[],"relativePath":"node/nest.md"}'),t={name:"node/nest.md"},o=a("",2),c=[o];function p(r,l,d,_,i,h){return e(),n("div",null,c)}const m=s(t,[["render",p]]);export{f as __pageData,m as default};
