@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as n,a}from"./app.a4a811e5.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/16-until.md"}'),o={name:"interview/vue/16-until.md"},s=a("p",null,"16-until",-1),r=[s];function i(c,_,l,d,p,u){return t(),n("div",null,r)}const v=e(o,[["render",i]]);export{f as __pageData,v as default};

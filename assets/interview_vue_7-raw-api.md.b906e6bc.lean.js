@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a,a as r}from"./app.a4a811e5.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/7-raw-api.md"}'),o={name:"interview/vue/7-raw-api.md"},s=r("p",null,"7-raw-api",-1),n=[s];function i(c,p,_,d,l,m){return t(),a("div",null,n)}const v=e(o,[["render",i]]);export{f as __pageData,v as default};
