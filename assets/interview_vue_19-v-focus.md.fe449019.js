@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as o,a as s}from"./app.a4a811e5.js";const v=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/19-v-focus.md"}'),a={name:"interview/vue/19-v-focus.md"},c=s("p",null,"19-v-focus",-1),n=[c];function r(_,i,d,p,u,f){return t(),o("div",null,n)}const m=e(a,[["render",r]]);export{v as __pageData,m as default};

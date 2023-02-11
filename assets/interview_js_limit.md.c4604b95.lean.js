@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,d as l}from"./app.a4a811e5.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/js/limit.md"}'),p={name:"interview/js/limit.md"},o=l("",3),e=[o];function t(c,r,F,y,D,A){return n(),a("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};

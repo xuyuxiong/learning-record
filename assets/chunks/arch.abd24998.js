@@ -1,1 +1,1 @@
-const r="/record/react/arch.jpg";export{r as _};
+const r="/react/arch.jpg";export{r as _};
