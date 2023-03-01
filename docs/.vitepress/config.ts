@@ -66,10 +66,11 @@ export default withMermaid(defineConfigWithTheme<ThemeConfig>({
       { text: '🔥一起进步', link: '/about' },
       { text: '英语', link: '/blog/itwords' },
       { text: '🔥面试题', link: '/interview/' },
+      { text: '前端基建', link: '/infrastructure/' },
       { text: '玩转Vue3', link: '/vue/' },
       { text: '玩转React18', link: '/react/' },
-      { text: '源码漫游记', link: '/source/' },
-      { text: '路线图', link: 'https://roadmap.shengxinjing.cn/' },
+      { text: 'web3', link: '/web3/' },
+      { text: '源码漫游记', link: '/source/' }
     ],
 
     socialLinks: [
@@ -105,6 +106,113 @@ export default withMermaid(defineConfigWithTheme<ThemeConfig>({
       }
     },
     sidebar: {
+      '/interview': [
+        {
+          text: 'HTML',
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/HTML')
+        },
+        {
+          text: "CSS",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/CSS')
+        },
+        {
+          text: "JavaScript",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/JavaScript')
+        },
+        {
+          text: "TypeScript",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/TypeScript')
+        },
+        {
+          text: "Vue",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/Vue')
+        },
+        {
+          text: "React",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/React')
+        },
+        {
+          text: "NetWork",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/NetWork')
+        },
+        {
+          text: "工程化",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/工程化')
+        },
+        {
+          text: "设计模式",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/设计模式')
+        },
+        {
+          text: "性能优化",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/性能优化')
+        },
+        {
+          text: "小程序",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/小程序')
+        },
+        {
+          text: "跨端",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/跨端')
+        },
+        {
+          text: "LowCode",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/LowCode')
+        },
+        {
+          text: "微前端",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/微前端')
+        },
+        {
+          text: "架构",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/架构')
+        },
+        {
+          text: "安全",
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/安全')
+        }
+
+      ],
+      '/infrastructure': [
+        {
+          text: 'HTML',
+          collapsible: true,
+          collapsed: true,
+          items: getDirctSidebar('interview/HTML')
+        }
+      ],
       "/react": [
         {
           text: '玩转React18',
@@ -159,8 +267,37 @@ export default withMermaid(defineConfigWithTheme<ThemeConfig>({
           ],
         },
       ],
+      "/web3": [
+        {
+          text: '玩转Vue3',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              text: 'Vue3+TS企业级实战+组件库', link: '/vue/'
+            },
+            {
+              text: '实战入门', items: [
+                { text: 'Vue入门', link: '/vue/intro' }
+              ]
+            },
+            {
+              text: '企业级实战', items: [
+                { text: 'Typescript', link: '/vue/ts' }
+              ]
+            },
+            {
+              text: '组件库入门', items: [
+                { text: '组件库技术栈', link: '/vue/component' }
+              ]
+            },
+            {
+              text: 'Vue生态', items: getDirctSidebar('vue/framework')
+            },
+          ],
+        },
+      ],
       '/': [
-
         {
           text: '文章',
           collapsible: true,
@@ -171,15 +308,6 @@ export default withMermaid(defineConfigWithTheme<ThemeConfig>({
             { text: '生活规划', items: getDirctSidebar('life') }
           ]
         },
-        {
-          text: '面试题',
-          collapsible: true,
-          collapsed: true,
-          items: [
-            { text: '面试题', link: '/interview/' },
-          ]
-        },
-
         projectSidebar,
         {
           text: "源码漫游记",
@@ -194,11 +322,11 @@ export default withMermaid(defineConfigWithTheme<ThemeConfig>({
           items: getDirctSidebar('algorithm')
         }
       ],
+
     },
     footer: {
       message: '文明其精神，野蛮其体魄',
       copyright: ' Copyright © 京ICP备18000331号-1'
     }
-  },
-
+  }
 }))
