@@ -1,1 +1,0 @@
-import{_ as e,o as t,c,a}from"./app.ef61e8c5.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/10-lifecycle.md"}'),o={name:"interview/vue/10-lifecycle.md"},s=a("p",null,"10-lifecycle",-1),n=[s];function r(i,l,_,d,p,f){return t(),c("div",null,n)}const v=e(o,[["render",r]]);export{u as __pageData,v as default};

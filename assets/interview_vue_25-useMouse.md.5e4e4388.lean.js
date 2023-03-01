@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as s,a as o}from"./app.c130118d.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/25-useMouse.md"}'),a={name:"interview/vue/25-useMouse.md"},n=o("p",null,"25-useMouse",-1),r=[n];function c(_,i,u,d,p,l){return t(),s("div",null,r)}const v=e(a,[["render",c]]);export{f as __pageData,v as default};

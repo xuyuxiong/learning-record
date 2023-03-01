@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as o,a}from"./app.c130118d.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"interview/vue/13-dom-portal.md"}'),r={name:"interview/vue/13-dom-portal.md"},s=a("p",null,"13-dom-portal",-1),n=[s];function c(_,d,i,p,l,m){return t(),o("div",null,n)}const v=e(r,[["render",c]]);export{f as __pageData,v as default};
