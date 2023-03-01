@@ -4,7 +4,7 @@
 - SFC Composition API语法糖
 - Teleport传送门：可以让子组件在视觉上跳出父组件
 - Fragments：支持多个根节点
-- SFS CSS变量：支持在<style></style>里使用v-bind,给CSS绑定JS变量
+- SFS CSS变量：支持在style里使用v-bind,给CSS绑定JS变量
 - Suspense：可以在组件渲染之前的等待时间显示指定内容，比如loading
 - v-memo：可以缓存html模版，比如v-for列表不会变化就可以缓存，内存换时间
 在框架设计层面：
