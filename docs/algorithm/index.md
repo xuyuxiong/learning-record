@@ -274,7 +274,7 @@ function find(item) {
 }
 
 function insert(newElement, item) {
-  var newNode = new Node(newElelemnt)
+  var newNode = new Node(newElement)
   var current = this.find(item)
   newNode.next = current.next;
   current.next = newNode
@@ -902,7 +902,151 @@ function binSearch(arr, data) {
 
 
 ## 高级算法
-
-
-
-
+### 动态规划
+使用递归去解决问题虽然简洁，但效率不高。许多使用递归去解决的编程问题可以重写为使用动态规划的技巧去解决。动态规划方案通常会使用一个数组来建立一张表，用于存放被分解成众多子问题的解。当算法执行完毕，最终的解将会在这个表中很明显的地方被找到。
+```js
+// 这个函数的问题在于它的执行效率非常低
+function recurFib(n) {
+  if (n < 2) {
+    return n;
+  }
+  return recurFib(n - 1) + recurFib(n - 2)
+}
+// 动态规划
+function dynFib(n) {
+  var val = []
+  for(var i = 0; i <= n; ++ i) {
+    val[i] = 0;
+  }
+  if (n === 1 || n === 2) {
+    return 1;
+  }
+  val[1] = 1
+  val[2] = 2;
+  for(var i = 3; i<= n; i++) {
+    val[i] = val[i - 1] + val[i - 2]
+  }
+  return val[n - 1]
+}
+```
+寻找最长公共子串
+```js
+function lcs(word1, word2) {
+  var max = 0;
+  var index = 0;
+  var lcsarr = new Array(word1.length)
+  for (let i = 0; i <= word1.length; ++i) {
+    lcsarr[i] = new Array(word2.length);
+    for (var j = 0; j <= word2.length; ++j) {
+      lcsarr[i][j] = 0
+    }
+  }
+  for (let i = 0; i < word1.length; ++i) {
+    for (let j = 0; j < word2.length; ++j) {
+      if (i == 0 ||
+        j == 0) {
+        lcsarr[i][j] = 0
+      } else {
+        if (word1[i - 1] == word2[j - 1]) {
+          lcsarr[i][j] = lcsarr[i - 1][j - 1] + 1
+        } else {
+          lcsarr[i][j] = 0
+        }
+      }
+      if (max < lcsarr[i][j]) {
+        max = lcsarr[i][j];
+        index = i
+      }
+    }
+  }
+  var str = ''
+  if (max == 0) {
+    return ''
+  } else {
+    for (let i = index - max; i < max; ++i) {
+      str += word2[i]
+    }
+    return str
+  }
+}
+```
+背包问题
+```js
+// 递归解决
+function max(a, b) {
+  return a > b ? a : b
+}
+function knapsack(capacity, size, value, n) {
+  if (n == 0 || capacity == 0) {
+    return 0
+  }
+  if (size[n - 1] > capacity) {
+    return knapsack(capacity, size, value, n - 1)
+  } else {
+    return max(value[n - 1] + knapsack(capacity - size[n - 1], size, value, n - 1), knapsack(capacity, size, value, n - 1))
+  }
+}
+// 动态规划
+function dKnapsack(capacity, size, value, n) {
+  var K = []
+  for (var i = 0; i <= n; i++) {
+    K[i] = []
+  }
+  console.log(K)
+  for (var i = 0; i <= n; i++) {
+    for (var w = 0; w <= capacity; w++) {
+      if (i == 0 || w == 0) {
+        K[i][w] = 0
+      } else if (size[i - 1] <= w) {
+        K[i][w] = max(value[i - 1] + K[i - 1][w - size[i - 1]], K[i - 1][w])
+      } else {
+        K[i][w] = K[i - 1][w]
+      }
+    }
+  }
+  return K[n][capacity]
+}
+```
+### 贪心算法
+找零问题的贪心算法解法
+```js
+function makeChange(origAmt, coins) {
+  var remainAmt = 0;
+  if (origAmt % .25 < origAmt) {
+    coins[3] = parseInt(origAmt / .25)
+    remainAmt = origAmt % .25
+    origAmt = remainAmt
+  }
+  if (origAmt % .1 < origAmt) {
+    coins[2] = parseInt(origAmt / .1)
+    remainAmt = origAmt % .1
+    origAmt = remainAmt
+  }
+  if (origAmt % .1 < origAmt) {
+    coins[1] = parseInt(origAmt / .05)
+    remainAmt = origAmt % .05
+    origAmt = remainAmt
+  }
+  coints[0] = parseInt(origAmt / .01)
+}
+```
+部分背包问题
+```js
+function ksack(values, weights, capacity) {
+  let load = 0,
+    i = 0,
+    w = 0
+  while (load < capacity && i < 4) {
+    if (weights[i] <= (capacity - load)) {
+      w += values[i];
+      load += weights[i]
+    } else {
+      var r = (capacity - load) / wegiths[i];
+      w += r * values[i];
+      load += weights[i]
+    }
+    ++i
+  }
+  return w
+}
+```

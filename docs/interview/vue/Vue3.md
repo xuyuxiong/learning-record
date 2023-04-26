@@ -1,3 +1,5 @@
+[vue3diff算法](https://mp.weixin.qq.com/s/-KHkunImjGPXZeZDmyctNw)
+[调度系统](https://mp.weixin.qq.com/s/w-Jsb1RpytbEk0eS3N_nwQ)
 ## Vue3带来的新变化 & 新特性概览
 在API特性方面：
 - Compositin API： 可以更好的逻辑复用和代码组织，同一功能的代码不至于像以前一样太分散，虽然Vue2中可以用mixin来实现代码复用，但也存在问题，方法或属性名会冲突，代码来源不清粗
@@ -82,3 +84,18 @@ Options API的问题
 ## Composition API与React Hook很像，区别是什么
 
 ## Vue3.0有什么更新
+
+## Composition API是怎么实现的
+
+## 响应式实现
+[](https://juejin.cn/post/7090328834318270494)
+
+## Vue3.0性能提升主要体现在哪些方面
+
+## 有哪些新组件
+
+## Composition API和React Hook很像，他们的区别是什么
+
+## Composition API 与 Options API有什么不同
+
+## 

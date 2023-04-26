@@ -217,6 +217,17 @@ i）定期请第三方机构做安全性测试，漏洞扫描
 ii）使用第三方开源库做上线前的安全测试，可以考虑融合到 CI 中
 iii）code review 保证代码质量
 iv）默认项目中设置对应的 Header 请求头，如 X-XSS-Protection、 X-Content-Type-Options 、X-Frame-Options Header、Content-Security-Policy 等等
-v）对第三方包和库做检测：NSP(Node Security Platform)，Snyk
+v）对第三方包和库做检测：NSP(Node Security Platform)，Synk
+
+## iframe 安全
+
+说明：
+i）嵌入第三方 iframe 会有很多不可控的问题，同时当第三方 iframe 出现问题或是被劫持之后，也会诱发安全性问题
+ii）点击劫持
+攻击者将目标网站通过 iframe 嵌套的方式嵌入自己的网页中，并将 iframe 设置为透明，诱导用户点击。
+iii）禁止自己的 iframe 中的链接外部网站的 JS
+预防方案：
+i）为 iframe 设置 sandbox 属性，通过它可以对 iframe 的行为进行各种限制，充分实现“最小权限“原则
+ii）服务端设置 X-Frame-Options Header 头，拒绝页面被嵌套，X-Frame-Options 是 HTTP 响应头中用来告诉浏览器一个页面是否可以嵌入 
 
 ## 什么是对称密钥（共享密钥）加密？什么是非对称密钥（公开密钥）加密？哪个更加安全？

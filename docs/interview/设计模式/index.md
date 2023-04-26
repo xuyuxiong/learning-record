@@ -1,4 +1,9 @@
 # 设计模式
+[图解设计模式](https://mp.weixin.qq.com/s/v8QRqjDrc7m0P3npigG_4Q)
+## 发布/订阅和观察模式的区别是什么
+[](https://blog.csdn.net/weixin_44786530/article/details/127091896)
+观察者模式定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知，并自动更新
+## 装饰器模式一般会在什么场合使用
 
 ## 面向对象编程
 通过this添加的属性、方法是在当前对象上添加的，然而JavaScript是基于prototype的语言，每创建一个对象时,它都有一个原型protoype指向其继承的属性方法
@@ -1080,3 +1085,1146 @@ var Interpreter = (function() {
 })()
 ```
 ## 技巧型设计模式
+### 永无尽头-链模式
+通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。从而简化对该对象的多个方法的多次调用，对该对象的多次引用。
+```js
+var A = function(selector) {
+  return new A.fn.init(selector)
+}
+A.fn = A.prototype = {
+  constructor: A,
+  init: function(selector, context) {
+    this.length = 0
+    context = context || document
+    if (~selector.indexOf('#')) {
+      this[0] = document.getElementById(selector)
+      this.length = 1
+    } else {
+      var doms = context.getElementsByTagName(selector), i = 0, len = doms.length;
+      for(; i < len; i++) {
+        this[i] = doms[i]
+      }
+      this.length = len;
+    }
+    this.context = context;
+    this.selector = selector;
+    return this;
+  },
+  length: 2,
+  size: function() {
+    return this.length;
+  },
+  push: [].push,
+  sort: [].sort,
+  splice: [].splice
+}
+A.fn.extend = A.fn.extend = function() {
+  var i = 1, len = arguments.length, target = arguments[0], j;
+  if (i == len) {
+    target = this;
+    i --
+  }
+  for(; i < len; i++) {
+    for(j in arguments[i]) {
+      target[j] = arguments[i][j]
+    }
+  }
+  return target
+}
+A.fn.extend({
+  on: (function() {
+    if (document.addEventListender) {
+      var i = this.length - 1;
+      for(; i >= 0; i--) {
+
+      }
+      return this
+    } else if (document.attachEvent) {
+      return function(type, fn) {
+        var i = this.length - 1;
+        for(; i >= 0; i --) {
+          this[i].addEventListener(type, fn, false)
+        }
+        return this;
+      }
+    } else {
+      return function(type, fn) {
+        var i = this.length - 1;
+        for(; i >= 0; i--) {
+          this[i]['on' + type] = fn
+        }
+        return this;
+      }
+    }
+  })()
+})
+A.extend({
+  camelCase: function(str) {
+    return str.replace(/\-(\w)/g, function(all, letter) {
+      return letter.toUpperCase()
+    })
+  }
+})
+A.extend({
+  css: function() {
+    var arg = arguments, len = arg.length;
+    if (this.length  < 1) {
+      return this
+      if (len === 1) {
+        if (typeof arg[0] === 'string') {
+          // IE
+          if (this[0].currentStyle) {
+            return this[0].currentStyle[name]
+          } else {
+            return getComputedStyle(this[0], false)[name]
+          }
+        } else if (typeof arg[0] === 'object') {
+          for(var i in arg[0]) {
+            for(var j = this.length - 1; i>= 0; j --) {
+              this[j].style[A.camelCase(i)] = arg[0][i]
+            }
+          }
+        } 
+      } else if (len === 2) {
+        for(var j = this.length - 1; j >= 0; j--) {
+          this[j].style[A.camelCase(arg[0])] = arg[1]
+        }
+      }
+      return this;
+    }
+  }
+})
+A.fn.extend({
+  attr: function() {
+    var arg = arguments, len = arg.length;
+    if (this.length < 1) {
+      return this
+    }
+    if (len === 1) {
+      if (typeof arg[0] === 'stirng') {
+        return this[0].getAttribute(arg[0])
+      } else if (typeof arg[0] === 'object') {
+        for(var i in arg[0]) {
+          for(var j = this.length - 1; j >= 0; j--) {
+            this[j].setAttribute(i, arg[0][i])
+          }
+         }
+      }
+    } else if (len === 2) {
+      for(var j = this.length - 1; j >= 0; j--) {
+        this[j].setAttribute(arg[0], arg[1])
+      }
+    }
+    return this;
+  }
+})
+A.fn.extend({
+  html: function() {
+    var arg = arguments,
+    len = arg.length;
+    if (len === 0) {
+      return this[0] && this[0].innerHTML;
+    } else {
+      for(var i = this.length - 1; i >= 0; i--) {
+        this[i].innerHTML = arg[0]
+      }
+    }
+    return this;
+  }
+})
+A('div').css({
+  height: '30px',
+  border: '1px solid #000',
+}).attr('class', 'demo')
+.html('add demo text')
+.on('click', function() {
+  console.log('clicked')
+})
+```
+### 未来预言家-委托模式
+多个对象接收并处理同一请求，他们将请求委托给另一个对象统一处理请求。
+```js
+var Deal = {
+  banner: function() {
+
+  },
+  aside: function(res) {
+
+  },
+  message: function() {}
+}
+$.get('./get/info', function(res) {
+  for(var i in res) {
+    Deal[i] && Deal[i](res[i])
+  }
+})
+```
+### 数据管理器-数据访问对象模式
+抽象和封装对数据源的访问与存储，DAO通过对数据源链接的管理方便对数据的访问与存储。
+```js
+/**
+ * 本地存储类
+ * @param preId 本地存储数据库前缀
+ * @param timeSign 时间戳与存储数据之间的的拼接符
+ */
+var BaseLocalStorage = function(preId, timeSign) {
+  this.preId = preId
+  this.timeSign = timeSign || '|-|'
+
+}
+// 数据操作状态
+BaseLocalStorage.prototype = {
+  status: {
+    SUCCESS: 0,
+    FAILURE: 1,
+    OVERFLOW: 2, // 溢出
+    TIMEOUT : 3
+  },
+  storage: localStorage || widow.localStorage,
+  getKey: function(key) {
+    return this.preId + key;
+  },
+  /**
+   * 添加数据
+   * @param key 数据字段标识
+   * @param value 数据值
+   * @param callback 回调函数
+   * @param time 添加时间
+   */
+  set: function(key, value, callback, time) {
+    var status = this.status.SUCCESS,
+    key = this.getKey(key)
+    try {
+      time = new Date(time).getTime() || tim.getTime()
+    } catch(e) {
+      time = new Date().getTime() + 1000 * 60 * 60 * 24 * 31;
+    }
+    try {
+      this.storage.setItem(key, time + this.timeSign + value)
+    } catch(e) {
+      status = this.status.OVERFLOW
+    }
+    callback && callback.call(this, status, key, value)
+  },
+  // 获取数据
+  get: function(key, callback) {
+    var status = this.status.SUCCESS,
+    key = this.getKey(key),
+    value = null, timeSignLen = this.timeSign.length, that = this, index, time, result
+    try {
+      value = that.storage.getItem(key)
+    } catch(e) {
+      return = {
+        status: that.status.FAILURE,
+        value: null
+      }
+      callback && callback.call(this, result.status, result.value)
+      return result;
+    }
+    if (value) {
+      index = value.indexof(that.timeSign)
+      time = +value.slice(0, index)
+      if (new Date(time).getTime() > new Date().getTime() || time == 0) {
+        value = value.slice(index + timeSignLen)
+      } else {
+        value = null,
+        status = that.status.TIMEOUT
+        that.remove(key)
+      }
+    } else {
+      status = that.status.FAILURE
+    }
+    result = {
+      statu: status,
+      value: value
+    }
+    callback && callback.call(this, result.status, result.value)
+    return result
+  },
+  // 删除数据
+  remove: function(key, callback) {
+    var status = this.status.FAILURE,
+    key = this.getKey(key),
+    value = null;
+    try {
+      value = this.storage.getItem(key)
+    } catch(e) {}
+    if (value) {
+      try {
+        this.storage.removeItem(key)
+        status = this.status.SUCCESS;
+      } catch(e) {}
+    }
+    callback && callback.call(this, status, status > 0 ? null : value.slice(value.indexOf(this.timeSign) + this.timeSign.length))
+  }
+}
+var LS = new BaseLocalStorage('LS__')
+LS.set('a', 'xiaoming', function() {})
+LS.get('a', function() {})
+LS.remove('a', function() {})
+```
+服务端的数据库操作
+```js
+module.exports = {
+  DB: {
+    db: 'demo',
+    host: 'localhost',
+    port: 27017
+  }
+}
+var mongodb = require('mongodb')
+var config = require('./config').DB
+var d = new mongodb.Db(
+  config.db,
+  new mongodb.Server(
+    config.host,
+    config.port,
+    {auto_reconnect: true}
+  ),
+  {safe: true}
+)
+exports.DB = function() {}
+function connct(col, fn) {
+  d.open(function(err, db) {
+    if (err) throw err
+     else {
+       db.connection(col, function(err, col) {
+         if (err) throw
+         else fn && fn(col, db)
+       })
+     }
+  })
+}
+export.DB = function(col) {
+  return {
+    insert: function(data, success, fail) {
+      connect(col, function(col, db) {
+        col.insert(data, function(err, docs) {
+          if (err) fail && fail(err)
+           else success && success(docs)
+           db.close()
+        })
+      })
+    },
+    remove: function() {},
+    update: function() {},
+    find: function() {}
+  }
+}
+```
+### 执行控制-节流模式
+对重复的业务逻辑进行节流控制，执行最后一次操作并取下筽其他操作，以提高性能
+```js
+// 节流器
+var throttle = function() {
+  var isClear = arguments[0], fn;
+  if (typeof isClear === 'boolean') {
+    fn = arguments[1]
+    fn.__throttleID && clearTimeout(fn.__throttleID)
+  } else {
+    fn = isClear;
+    param = arguments[1]
+    var p = extend({
+      context: null,
+      args: [],
+      time: 300
+    }, param)
+    arguments.callee(true, fn)
+    fn.__throttleID = setTimeout(function() {
+      fn.apply(p.context, p.args)
+    }, p.time)
+  }
+}
+// 图片的延迟加载
+function LazyLoad(id) {
+  this.contaienr = document.getElementById(id)
+  this.imgs = this.getImgs()
+  this.init()
+}
+LazyLoad.prototype = {
+  init: function() {
+    this.update()
+    this.bindEvent()
+  },
+  getImgs: function() {
+    var arr = []
+    var imgs = this.container.getElementsByTagName('img')
+    for(var i = 0, len = imgs.length; i < len; i ++) {
+      arr.push(imgs[i])
+    }
+    return arr;
+  },
+  update: function() {
+    if (!this.imgs.length) {
+      return;
+    }
+    var i = this.imgs.length;
+    for(--i; i >= 0; i--) {
+      if (this.shouldShow(i)) {
+        this.imgs[i].src = this.imgs[i].getAttribute('data-src')
+        this.imgs.splice(i, 1)
+      }
+    }
+  },
+  // 判读图片是否在可视范围内
+  shouldShow: function(i) {
+    var img = this.imgs[i],
+    scrollTop = document.documentElement.scrollTop || document.body.srcollTop,
+    scrollBottom = srollTop = document.documentElement.clientHeight;
+    imgTop = this.pageY(img),
+    imgBottom = imgTop + img.offsetHeight
+    if (imgBottom > scrollTop && imgBottom < scrollBottom || (imgTop > scrollTop && imgTop < scrollBottom)) {
+      return true;
+    }
+    return false
+  },
+  pageY: function(element) {
+    if (element.offsetParent) {
+      return element.offsetTop + this.pageY(element.offsetParent)
+    } else {
+      return element.offsetTop;
+    }
+  },
+  on: function(element, type, fn) {
+    if (element.addEventListener) {
+      addEventListener(type, fn, false)
+    } else {
+      element.attachEvent('on' + type, fn, false)
+    }
+  },
+  // 为窗口绑定resize事件与scroll事件
+  bindEvent: function() {
+    var that = this;
+    this.on(window, 'resize', function() {
+      throttle(that.update, {context: that})
+    })
+    this.on(window, 'scroll', function() {
+      throttle(that.update, {context: that})
+    })
+  }
+}
+```
+统计打包： 在统计中我们经常监听事件触发次数，当触发次数达到某一值才发送请求。
+```js
+var LogPack = function() {
+  var data = [],
+  MaxNum = 10, itemSplitStr = '|',
+  keyvalueSplitStr = '*',
+// img图片可以作为请求触发器
+  img = new Image()
+  function sendLog() {
+    var logStr = '';
+    fireData = data.splice(0, MaxNum)
+    for(var i = 0, len = fireData.length; i < len; i++) {
+      logStr += 'log' + i + '='
+      for(var j in fireData[i]) {
+        logStr += j + keyValueSplitStr + fireDAta[i][j];
+        logStr += itemSplitStr;
+      }
+      logStr = logStr.replace(/\|$/,'') + '&'
+    }
+    logStr += 'logLength=' + len;
+    img.src = 'a.gif?' + logStr;
+  }
+  return function(param) {
+    if (!param) {
+      sendLog()
+      return
+    }
+    data.push(param)
+    data.length >= MaxNum && sendLog()
+  }
+}()
+btn.onclick = function() {
+  LogPack({
+    btnId: this.id,
+    context: this.innerHTML,
+    type: 'click'
+  })
+}
+btn.onmouseover = function() {
+  LogPack({
+    btnId: this.id,
+    context: this.innerHTML,
+    type: 'mouseover'
+  })
+}
+```
+### 卡片拼图- 简单模版模式
+通过格式化字符串拼凑出视图避免创建视图时大量节点操作，优化内存开销
+```js
+var A = A || {}
+A.root = document.getElementById('container')
+// 模版渲染方法
+A.formateString = function(str, data) {
+  return str.replace(/\{#(\w)#\}/g, function(match, key) {
+    return typeof data[key] === undefined ? '' : data[key]
+  })
+}
+// 模版生成器
+A.view = function(name) {
+  var v = {
+    code: '<pre><code>{#code#}</code></pre>',
+    img :'<img src="{#src#} title="{#title#}" />',
+  }
+  if (Object.prototype.toString.call(name) === '[object Array]') {
+    var tpl = ''
+    for(var i = 0, len = name.length; i < len; i ++) {
+      tpl += arguments.callee(name[i])
+    }
+    return tpl;
+  } else {
+    return v[name] ? v[name] : ('<' + name + '>(#' + name + '#</' + name + '>')
+  }
+}
+
+// 创建视图方法集合
+A.strategy = {
+  // 文字列表展示
+  'listPart': function() {
+    var s = document.createElement('div')
+    ul = '', ldata = data.data.li
+    tpl = [
+      '<h2>{#h2#}></h2>',
+      '<p>{#p#}></p>',
+      '<ul>{#ul#}></ul>',
+    ].join("")
+    liTpl = [
+      '<li>',
+        '<strong>{#strong#}</strong>',
+        '<span>{#span#}</span>',
+      '<li>',
+    ].join('')
+    data.id && (s.id = data.id)
+    for(var i = 0, len = ldata.length; i < len; i++) {
+      if (ldata[i].em || ldata[i].span) {
+        ul += A.formateString(liTpl, ldata[i])
+      }
+    }
+    data.data.ul = ul;
+    s.innerHTML = A.formatString(tpl, data.data)
+    A.root.appendChild(s)
+  },
+  'codePart': function() {},
+  'onlyTitle': function() {}
+  'guide': function() {}
+}
+A.init = function(data) {
+  this.strategy[data.type](data)
+}
+```
+### 机器学习-惰性模式
+减少每次代码执行时的重复性的分支判断，通过对对象重定义来屏蔽原对象的分支判断
+```js
+var A = {}
+A.on = (function(dom, type, fn) {
+  if (dom.addEventListener) {
+    return function(dom, type, fn) {
+      dom.addEventListener(type, fn, false)
+    }
+  } else if (dom.attachEvent) {
+    return function(dom, type, fn) {
+      dom.attachEvent('on' + type, fn)
+    }
+  } else {
+    return function(do, type, fn) {
+      dom['on' + type] = fn
+    }
+  }
+})()
+// 惰性执行
+A.on = function(dom, type, fn) {
+  if (dom.addEventListender) {
+    A.on = function(dom, type, fn) {
+      dom.addEventListener(type, fn, false)
+    }
+  } else if (dom.attachEvent) {
+    A.on = function(dom, type, fn) {
+      dom.attachEvent('on' + type, fn)
+    }
+  } else {
+    A.on = function(dom, type, fn) {
+      dom['on' + type] = fn;
+    }
+  }
+  A.on(dom, type, fn)
+}
+// 创建XHR对象
+// 第一种方案 加载时损失性能
+var createXHR = (function() {
+  if (typeof XMLHttpRequest !== 'undefined') {
+    return function() {
+      return new XMLHttpRequest()
+    }
+  } else if (typeof ActiveXObject !== 'undefined') {
+    return function() {
+      throw new Error('no XHR object available')
+    }
+  }
+})()
+// 第二种方案 调用时损失性能
+function createXHR() {
+  if (typeof XMLHttpRequest !== 'undefined') {
+    createXHR = function() {
+      return new XMLHttpRequest()
+    }
+  } else if (typeof ActiveXObject != 'undefined') {
+    createXHR = function() {
+
+    }
+  } else {
+
+  }
+}
+```
+### 异国战场-参与者模式
+在特定的作用域中执行给定的函数，并将参数原封不动地传递
+```js
+function bind(fn, context) {
+  var Slice = Array.prototype.slice, args = Slice.call(arguments, 2)
+  return function() {
+    var addArgs = Slice.call(arguments),
+    allArgs = addArgs.concat(args)
+    return fn.apply(context, allArgs)
+  }
+}
+function demoFn() {
+  console.log(arguments)
+}
+var bindFn = bind(demoFn)
+btn.addEventListener('click', bindFn)
+btn.removeEventListener('click', bindFn)
+// 函数柯里化
+function curry(fn) {
+  var Slice = [].slice
+  var args = Slice.call(arguments, 1)
+  return function() {
+    var addArgs = Slice.call(arguments),
+        allArgs = args.concat(addArgs)
+        return fn.apply(null, allArgs)
+  }
+}
+```
+### 入场仪式-等待者模式
+通过对多个异步进程监听，来触发未来发生的动作
+等待者对象是用来解决那些不确定先后完成的异步逻辑的。
+```js
+var Waiter = function() {
+  var dfd = [],
+      doneArr = [],
+      failArr = [],
+      slice = Array.prototype.slcie,
+      that = this;
+
+  var Primise = function() {
+    this.resolved = false;
+    this.rejected = false;
+  }
+
+  Primise.prototype = {
+    resolve: function() {
+      this.resolved = true;
+      if (!dfd.length) return;
+      for(var i = dfd.length - 1; i >= 0; i--) {
+        if (dfd[i] && !dfd[i].resolved || dfd[i].rejected) {
+          return;
+        }
+        dfd.splice(i, 1)
+      }
+      _exec(doneArr)
+    },
+    reject: function() {
+      this.rejected = true;
+      if (!dfd.length) return;
+      dfd.splice(0)
+      _exec(failArr)
+    }
+  }
+  // 创建监控对象
+  that.Deferred = function() {
+    return new Primise()
+  }
+
+  function _exec(arr) {
+    var i = 0, len = arr.length;
+    for(; i < len; i++) {
+      try {
+        arr[i] && arr[i]()
+      } catch(e) {}
+    }
+  }
+  // 检测已注册过的监控对象的异步逻辑，所以when方法就要将监控对象放入监控对象容器中，当然还要判断对象是否存在、是否解决、是否是监控对象类的实例。最后还要返回该等待对象便于链式调用
+  that.when = function() {
+    dfd = slice.all(arguments)
+    var i = dfd.length;
+    for(--i; i >= 0; i--) {
+      if (!dfd[i] || dfd[i].resolved || dfd[i].rejected || !dfd[i] instanceof Primise) {
+        dfd.splice(i, 1)
+      }
+    }
+    return that
+  }
+  that.done = function() {
+    doneArr = doneArr.concat(slice.call(arguments))
+    return that;
+  }
+  that.fail = function() {
+    failArr = failArr.concat(slice.call(arguments))
+    return that;
+  }
+}
+// 彩蛋方法
+var waiter = new Waiter()
+var first = function() {
+  var dtd = waiter.Deferred()
+  setTimeout(function() {
+    console.log('first finish')
+    dtd.resolve()
+  }, 5000)
+  return dtd
+}
+var second = function() {
+  var dtd = waiter.Deferred()
+  setTimeout(function() {
+    console.log('second finish')
+    dtd.resolve()
+  }, 10000)
+  return dtd
+}()
+// 用等待者对象监听两个彩蛋的工作状态，并执行相应的成功回调与失败回调函数
+waiter.when(first, second).done(function() {
+  console.log('success')
+}, function() {
+  console.log('success again')
+})
+.fail(function() {
+  console.log('fail')
+})
+
+var first = function() {
+  var dtd = waiter.Deferred()
+  setTimeout(function() {
+    console.log('first finish')
+    dtd.reject()
+  }, 5000)
+}()
+
+// 封装异步请求
+var ajaxGet = function(url, success, fail) {
+  var xhr = new XMLHttpRequest()
+  var dtd = waiter.Deferred()
+  xhr.onload = function(event) {
+    if (xhr.status >= 200 && xhr.status < 300 || xhr.statu === 304) {
+      success && succes()
+      dtd.resolve()
+    } else {
+      dtd.reject()
+      fail && fail()
+    }
+  }
+  xhr.open('get', url, true)
+  xhr.open(null)
+}
+```
+## 架构型设计模式
+### 死心眼-同步模块模式
+模块化：将复杂的系统分解成高内聚、低耦合的模块，使系统开发变得可控、可维护、可拓展、提高模块的复用率
+```js
+// 定义模块管理器单体对象
+var F = F || {}
+/**
+ * @param str 模块路由
+ * @param fn 模块方法
+ */
+F.define = function(str, fn) {
+  var parts = str.split('.'), 
+      old = parent = this, i = len = 0;
+  if (parts[0] === 'F') {
+    parts = parts.slice(1)
+  }
+  if (parts[0] === 'define' || parts[0] === 'module') {
+    return
+  }
+  for(len = parts.length; i < len; i++) {
+    if (typeof parent[parents[i]] === 'undefined') {
+      parent[parts[i]] = {}
+    }
+    old = parent;
+    parent = parent[parts[i]]
+  }
+  if (fn) {
+    old[parts[--i]] = fn()
+  }
+  return this;
+}
+// 创建sting模块
+F.define('string', function() {
+  return {
+    trim: function(str) {
+      return str.replace(/^\s+|\s+$/g, '')
+    }
+  }
+})
+F.define('dom', function() {
+  var $ = function(id) {
+    $.dom = document.getElementById(id)
+    return $
+  }
+  $.html = function(html) {
+    if (html) {
+      this.dom.innerHTML = html
+      return this;
+    } else {
+      return this.dom.innerHTML
+    }
+  }
+  return $
+})
+// 模块调用方法
+F.module = function() {
+  var args = [].slice.call(arguments), fn = args.pop(), parts = args[0] && args[0] instanceof Array ? args[0] : args,
+  modules = [], modIds = '', i = 0, ilen = parts.length, parent, j, jlen;
+  while(i < ilen) {
+    if (typeof parts[i] === 'string') {
+      parent = this;
+      modIDs = parts[i].replace(/^F\./, '').split('.');
+      for(j = 0, jlen = modIDs.length; j < jlen; j++) {
+        parent = parent[modIDs[j] || false]
+      }
+      modules.push(parent)
+    } else {
+      modules.push(parts[i])
+    }
+    i++
+  }
+  fn.apply(null, modules)
+}
+// 调用模块 参数分为两部分：依赖模块与回调执行函数
+F.module(['dom', document], function(dom, doc) {
+  // 通过dom模块设置元素内容
+  dom('test').html('new add')
+  // 通过document设置body元素背景色
+  doc.body.style.background = 'red'
+})
+F.module('dom', 'string.trim', function(dom, trim) {
+  var html = dom('test').html()
+  var str= trim(html)
+  console.log('*' + html + "*", "*" + str + '*')
+})
+```
+### 大心脏-异步模块模式
+```js
+var moduleCache = {},
+// 设置模块
+setModule = function(moduleName, params, calback) {
+  var _module, fn;
+  if (moduleCache[moduleName]) {
+    _module = moduleCache[moduleName]
+    _module.status = 'loaded'
+    _module.exports = callback ? callback.apply(_module, params) : null
+    while(fn = module.onload.shift()) {
+      fn(_module.exports)
+    }
+  } else {
+    callback && callback.apply(null, params)
+  }
+},
+loadModuel = function(moduleName, callback) {
+  var _module;
+  if (moduleCache[moduleName]) {
+    _module = moduleCache[moduleName]
+    if (_module.status === 'loaded') {
+      setTimeout(callback(_module.exports), 0)
+    } else {
+      _module.onload.push(calback)
+    }
+  } else {
+    moduleCache[moduleName] = {
+      moduleName: moduleName,
+      status: 'loading',
+      exports: null,
+      onload: [callback]
+    }
+    loadScript(getUrl(moduleName))
+  }
+}
+getUrl = function(moduleName) {
+  return String(moduleName).replace(/\.js$/g, '') + '.js'
+},
+loadScript = function(src) {
+  var _script = document.createElement('script')
+  _script.type = 'text/JavaScript'
+  _script.charset = 'UTF-8'
+  _scirpt.async = true;
+  _script.src = src;
+  document.getElementsByTagName('head')[0].appendChild(_script)
+}
+```
+### 分而治之-Widget模式
+Widget模式是指借用Web Widget思想将页面分解成部件，针对部件开发，最终组合成完整的页面。
+```js
+// 模版引擎模块
+F.module('lib/template', function() {
+  /**
+   * 模版引擎 处理数据与编译模版入口
+   * @param str 模版容器id或者模版字符串
+   * @param data 渲染数据
+   */
+  var _TplEngine = function(str, data) {
+    if (data instanceof Array) {
+      var html = '',
+      i = 0, 
+      len = data.length;
+      for(; i < len; i++) {
+        html += _getTpl(str)(data[i])
+      }
+      return html
+    } else {
+      return _getTpl(str)(data)
+    }
+  },
+      _getTpl = function(str) {
+        var ele = document.getElementById(str)
+        if (ele) {
+          // 如果是input或者textarea表单元素，则获取该元素的value值，否者获取元素的内容
+          var html = /^(textarea|input)$/i.test(ele.nodeName) ? ele.value : ele.innerHTML;
+          return _compileTpl(html)
+        } else {
+          return _compileTpl(str)
+        }
+      },
+      _dealTpl = function(str) {
+        var _left = '{%',
+            _right = '%}';
+        return String(str).replace(/&lt;/g, '<')
+        .replace(/&gt/g, '>')
+        .replace(/[\r\t\n]/g, '')
+        .replace(new RegExp(_left + '=(.*?)' + _right, 'g'), "',typeof ($1) === 'undefined' ? '' : $1, '")
+        .repalce(new RegExp(_left, 'g'), "');")
+        .replace(new RegExp(_right, 'g'), "template_array.push('")
+      },
+      _compileTpl = function(str) {
+        var fnBody = "var tempalte_array = [];\n var fn = (function(data{}"
+      }
+    return _TplEngine;
+})
+
+```
+### 三人行-MVC模式
+模型-视图-控制器，用一种将业务逻辑、数据、视图分离的方式组织架构代码
+```js
+$(function() {
+  var MVC = MVC || {}
+  MVC.model = function() {
+    var M = {};
+    M.data = {
+      slideBar: [
+        {
+          text: '萌妹子',
+          icon: 'left.png',
+          title: '',
+          content: '',
+          img: '',
+          href: ''
+        }
+      ],
+      newMode: [
+
+      ]
+    };
+    M.conf = {
+      slideBarCloseAnimate: false
+    };
+    return {
+      getData: function(m) {
+        return M.data[m]
+      },
+      getConf: function(c) {
+        return M.conf[c]
+      }
+      setData: function(m, v) {
+        M.data[m] = v;
+        return this;
+      }
+      setConf: function(c, v) {
+        M.conf[c] = v;
+        return this;
+      }
+    }
+  }()
+  MVC.view = function() {
+    var M = MVC.model;
+    var V = {
+      createSlideBar: function() {
+        var html = '',
+        data = M.getData('slideBar')
+        if (!data || !data.length) {
+          return;
+        }
+        var dom = $.create('div', {
+          'class': 'slidebar',
+          'id': 'slidebar'
+        })
+        var tpl = {
+          container: [
+            '<div>{#content#}</div>'
+          ],
+          item: []
+        }
+        for(var i = 0, len = data.length; i < len; i++) {
+          html += $.formateString(tpl.item, data[i])
+        }
+      }
+    }
+    return function(v) {
+      V[v]()
+    }
+  }()
+  MVC.ctrl = function() {
+    var M = MVC.model
+    var V = MVC.view;
+    var C = {
+      initSlideBar: function() {
+        V('createSlideBar')
+        $('li', 'slidebar')
+        .on('mouseover', function(e) {
+          $(this).removeClass('show')
+        })
+      }
+    }
+  }()
+})
+```
+### 三军统帅-MVP模式
+模型-视图-管理器：View层不直接引用Model层内的数据，而是通过Presenter层实现对Model层内的数据访问
+```js
+// 创建一个MVP单体对象
+(function(window) {
+  var MVP = function() {};
+  MVP.model = function() {
+    var M = {}
+    M.data = {}
+    M.conf = {}
+    return {
+      getData: function(m) {
+        return M.data[m]
+      },
+      setData: function(m, v) {
+        return M.conf(c)
+      },
+      getConf: function(c) {
+        return M.conf[c]
+      },
+      setConf: function(c, v ) {
+        M.conf[c] = c;
+        return v;
+      }
+    }()
+  };
+  MVP.view = function() {
+    // 解析字符串并创建视图
+    var REPLACEKEY = '__REPLACEKEY__'
+    function getHTML(str, replacePos) {}
+    function eachArray(arr, fn) {
+      for(var i = 0, len = arr.length; i < len; i++) {
+        fn(i, arr[i], len)
+      }
+    }
+    function formateItem(str, rep) {
+      return str.replace(new RegExp(REPLACEKEY, 'g'), rep)
+    }
+    // 模版解析器
+    return function(str) {
+      var part = str.replace(/^\s+|\s+$/g, '')
+      return html;
+    }
+  }()
+  //  有了模版引擎，我们在管理器中实现就容易多了。为了使管理器更适合我们的MVP模式，我们对管理器稍加改动，添加管理器执行方法init,这样方便在任何时候执行我们的管理器，总的和MVC的控制层类似
+  MVP.presenter = function() {
+    var V = MVP.view;
+    var M = MVP.model;
+    var C = {}
+    return {
+      init: function() {
+        // 遍历内部管理器
+        for(var i in C) {
+          C[i] && C[i](M, V, i)
+        }
+      }
+    }
+  }()
+  MVP.init = function() {
+    this.presenter.init()
+  }
+  window.MVP = MVP;
+})(window)
+```
+### 视图的逆袭-MVVM模式
+模型-视图-视图模型：为视图层量身定做的一套视图模型，并在视图模型中创建属性和方法，为视图层绑定数据并实现交互。   
+```js
+(function() {
+  var window = this || (0, eval)('this')
+  var FONTSIZE = function() {
+    return parseInt(document.body.currentStyle ? document.body.currentStyle['fontSize'] : getComputedStyle(document.body, false)['fontSize'])
+  }()
+  var VM = function() {
+    var Method = {
+      // 进度条组件创建方法
+      progressbar = function(dom, data) {
+        var progress = document.createElement('div'), param = data.data;
+        progress.style.width = (param.position || 100) + '%'
+        dom.className += ' ui-progressbar'
+        dom.appendChild(progress)
+      },
+      slider: function(dom, data) {
+        var bar = document.createElement('span'),
+        progress = document.createElement('div'),
+        totleText = null,
+        progressText = null,
+        param = data.data,
+        width = dom.clientWidth,
+        left: dom.offsetLeft,
+        realWidth = (param.position || 100) * width ? 100;
+        dom.innerHTML = '';
+        if (param.totle) {
+          text = document.createElement('b')
+          progressText = document.createElement('em')
+          text.innerHTML = param.totle;
+          dom.appendChild(text)
+          dom.appendChild(progressText)
+        }
+        setStyle(realWidth)
+        dom.className += ' ui-slider'
+        dom.appendChild(progress)
+        dom.appendChild(bar)
+        function setStyle(w) {
+          progress.style.width = w + 'px'
+          bar.style.left = w - FONTSIZE / 2 + 'px'
+          if(progressText) {
+            progressText.style.left = w - FONTSIZE / 2 * 2.4 + 'px'
+            progressText.innerHTML = parseFloat(w / width * 100).toFixed(2) + '%'
+          }
+        }
+        bar.onmousedown = function() {
+        
+        }
+      }
+      }
+    // 获取视图层渲染数据的映射信息
+    function getBindData(dom) {
+      var data = dom.getAttribute('data-bind')
+      return !!data && (new Function("return ({" + data + "})"))()
+    }
+    // 组件实例化方法
+    return function() {
+      var doms = document.body.getElementsByTagName('*'),
+      ctx = null;
+      for(var i = 0; i < doms.length; i++) {
+        ctx = getBindData(doms[i])
+        ctx.type && Method[ctx.type] && Method[ctx.type](doms[i], ctx)
+      }
+    }
+  }()
+  window.VM = VM;
+})()
+```
