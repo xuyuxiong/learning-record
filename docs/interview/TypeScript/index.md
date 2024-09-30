@@ -88,7 +88,7 @@ https://www.jianshu.com/p/1e786ce4786c
 ## 实现类型
 ```ts
 // Record<K, V>
-const key = 'a' | 'b' | 'c'
+const key = 'a' | 'b' | 'c';
 const a = Record<Key, string> = {
   a: 'a',
   b: 'b',

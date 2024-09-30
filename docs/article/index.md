@@ -1,3 +1,9 @@
+## 技术周报
+[字节技术周报](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODQ1OTExOA==&action=getalbum&album_id=1706105889872527361&scene=173&from_msgid=2247500975&from_itemidx=1&count=3&nolastread=1#wechat_redirect)
+
+## CSS
+[CSS 垂直居中的正确打开方式](https://mp.weixin.qq.com/s/hGLpRx0BMWFN2YbQrMY5QA)
+[如何更高效学习css](https://juejin.cn/post/7045872960166428685)
 ## Vue
 [手写vue3响应式原理](https://juejin.cn/post/7134281691295645732)
 [Vue3.2技术终结](https://juejin.cn/post/7083685762092236830)
@@ -10,7 +16,13 @@
 [vue3diff算法](https://mp.weixin.qq.com/s/-KHkunImjGPXZeZDmyctNw)
 [调度系统](https://mp.weixin.qq.com/s/w-Jsb1RpytbEk0eS3N_nwQ)
 [从 0 搭建 Vite 3 + Vue 3 前端工程化项目](https://juejin.cn/post/7156957907890733063)
-## React
+## react
+[react18](https://mp.weixin.qq.com/s/gDbNBFKWRpf-fbY0vzrghw)
+[如何思考比较全面](https://mp.weixin.qq.com/s/y7JzwBcbOobjWQdYEQ7KqA)
+[深入理解 Scheduler 原理](https://juejin.cn/post/7087933643821154312)
+[一名中/高级前端工程师的自检清单-React 篇](https://mp.weixin.qq.com/s/Os4U_AZGJiflkVe1WRBt0Q)
+[Hook 革命！浅谈 React 新 Hook 的未来与思想](https://mp.weixin.qq.com/s/DZVMvq_wwtjjCckci-tVaQ)
+[可在控制流中调用！React 新 hook 尝鲜](https://mp.weixin.qq.com/s/j6I-LR9ck_HFkrlHVImvRg)
 [diff](https://zhuanlan.zhihu.com/p/20346379)
 [React fiber是如何实现更新过程可控](http://zoo.zhengcaiyun.cn/blog/article/about-react-fiber)
 [实现一个铂金段位的 React](https://mp.weixin.qq.com/s/AMdrMnqLu-ghAm0efgkajg)
@@ -20,7 +32,16 @@
 [React 事件绑定原理](https://github.com/lgwebdream/FE-Interview/issues/23)
 ## React Native
 [RN](https://mp.weixin.qq.com/s/QTHqQ-jaO7yPV-rQzAqglA)
+[React Native 的全平台野心](https://mp.weixin.qq.com/s/86ol5bQ2l5-Hdo76eGZp2w)
 ## NodeJS
+[自动化打包工作流](https://mp.weixin.qq.com/s/6619NcJjuPQsZhmikDZ-Og)
+[Node.js 并发能力总结](https://mp.weixin.qq.com/s/6LsPMIHdIOw3KO6F2sgRXg)
+[NodeJS V8引擎的内存和垃圾回收器（GC）](https://mp.weixin.qq.com/s/rntFzV0_NCBg_9mC6zoSTA)
+[Node.js 安全最佳实践](https://mp.weixin.qq.com/s/nK_7c6zLGZasS9Pbyq8cAQ)
+[最全面的 Node.js 资源汇总推荐](https://mp.weixin.qq.com/s/Ma5wqPlPb_m6KKRG92T69g)
+[Node.js 底层原理](https://mp.weixin.qq.com/s/ognHGg6ptHmvWOWb9B4bPw)
+[RPC 的设计实现](https://mp.weixin.qq.com/s/Ky6SoWJv85orqYioihTRqg)
+[日志系统架构优化实践](https://mp.weixin.qq.com/s/s3DeAxrEbVmqtCHGP9lstg)
 [为什么说 Node.js 是实时应用程序开发的绝佳选择](https://mp.weixin.qq.com/s/Cnl_fxTo7JlwJPxcydG4xA)
 [基于 GraphQL 的前端 BFF 服务开发实践](https://mp.weixin.qq.com/s/kQLW070POemlD7gd3XBY5w)
 [万字长文全面解析GraphQL](https://mp.weixin.qq.com/s/PovMmO6ddcpBO5A2WtY89Q)
@@ -32,6 +53,7 @@
 [学完这篇 Nest.js 实战，还没入门的来锤我](https://mp.weixin.qq.com/s/oprPwqR7Xsg6TmK21CKUuw)
 [基于 NestJS/NuxtJS 的完整开源项目](https://mp.weixin.qq.com/s/rxzPMS-W9Rekq_ey0MXMaw)
 [Nest.js 实践总结分享](https://mp.weixin.qq.com/s/f_neR7Mtp7ES7BOZ0ySYbg)
+[Nest.js+TypeORM 实战](https://mp.weixin.qq.com/s/V54XLHnXenTZLsVCYBM92A)
 [Node.js 有难度的面试题](https://mp.weixin.qq.com/s/GbcJo3jQRi03EevqJGJHPg)
 [Node.js 开发人员学习路线图](https://mp.weixin.qq.com/s/XkDDiJF-jLBl6XAx4Xl92Q)
 [Node.js 并发能力总结](https://mp.weixin.qq.com/s/e_jucIQep9JjROmA6S0hXQ)
@@ -53,18 +75,23 @@
 [微信小程序的架构以及为什么要用到双线程](https://juejin.cn/post/6923912179544489991)
 [体积压缩](https://jelly.jd.com/article/5fbfa6e9cff6b301458392c3)
 ## TypeScript
+[如何进阶TypeScript功底？](https://mp.weixin.qq.com/s/VUUoUkQNt_3g6YOWJtTDDg)
+[Why TypeScript is Useful and How it Works](https://www.freecodecamp.org/news/typescript-for-react-developers/)
 [类型体操的9种类型运算](https://mp.weixin.qq.com/s/i3OjJQ_PVGMCeeRgUFoPpA)
 [TS封装axios](https://juejin.cn/post/7154991998989959181)
 [Vue3与TS实践思考](https://juejin.cn/post/7008063765585330207)
 [给团队做个分享，用30张图带你快速了解TypeScript](https://mp.weixin.qq.com/s/jEMsn42XbaowjdO1HjMoOQ)
-[面试TypeScript面试](https://juejin.cn/post/6988763249982308382)
+[TypeScript面试](https://juejin.cn/post/6988763249982308382)
 [TypeScript面试](https://mp.weixin.qq.com/s/ysh6rvs1da-b2M9emBkU1Q)
-
+[让人眼前一亮的 10 大 TS 项目](https://mp.weixin.qq.com/s/xzYi3L_NJnLYotacL8Yl1g)
 ## 音视频
 [音视频知识总结](https://mp.weixin.qq.com/s/9IrkE9li1L06TtEBcN1yOg)
+[浅聊WebRTC视频通话](https://mp.weixin.qq.com/s/Bfm4OYgzJpqUPuFZG-ObPQ)
+[你不知道的前端音视频知识](https://mp.weixin.qq.com/s/avGTmThkSuNQudSjzNyb5A)
 ## WebAssemble
 [为什么说 WASM 是 Web 的未来](https://mp.weixin.qq.com/s/rQomt1k4E0NN0vfo_8hQvQ)
-
+## WebComponent
+[关于Web Component](https://mp.weixin.qq.com/s/kYSs3jiSZ6xxrrLemH1ZaQ)
 ## Serveless
 [一文带你了解Serverless架构及应用场景](https://mp.weixin.qq.com/s/nGBypHu4jqYHpvqKjVJHOA)
 [探索 Serverless 中的前端开发模式(多场景)](https://mp.weixin.qq.com/s/-L4t_bwuY1y08e6rJOrDkw)
@@ -76,11 +103,14 @@
 [Babel插件开发](https://juejin.cn/post/6985453748248133645)
 
 ## Eslint
+[eslint机制](https://mp.weixin.qq.com/s/wYYDG7yU9h3-6DBYTCkuiA)
 [Eslint插件开发](https://mp.weixin.qq.com/s/mMyVpmno7F7UfpQulZEcXQ)
+[零基础理解 ESLint 核心原理](https://mp.weixin.qq.com/s/wzFh_dvB13hq9OV3pC955w)
 
 ## GIT
 [图解git](marklodato.github.io/visual-git-guide/index-zh-cn.html)
-
+[git工作流](https://mp.weixin.qq.com/s/WJpoU66XyFif8REodHonGg)
+[一些常用的 Git 进阶知识与技巧](https://mp.weixin.qq.com/s/INR0tGmPxx8IPuyCqgwB-g)
 ## nginx
 [前端开发者必备的nginx知识](https://mp.weixin.qq.com/s/tALJXon1kVP8JLvyK8K6oA)
 ## 网络
@@ -101,6 +131,12 @@
 [前后端鉴权方案](https://juejin.cn/post/7129298214959710244)
 [前端鉴权必须了解的 5 个兄弟：cookie、session、token、jwt、单点登录](https://mp.weixin.qq.com/s/-LcihJFRMbNFmREg0fZSRw)
 ## 浏览器
+[浏览器工作原理](https://juejin.cn/post/7204806134935306301)
+[合理利用缓存](https://juejin.cn/post/7178794675044614203)
+[web worker实战场景](https://juejin.cn/post/7176788060619669565)
+[并发请求数量控制](https://juejin.cn/post/7163522138698153997)
+[V8如何执行代码](https://mp.weixin.qq.com/s/OobHbsVbBEM8kiIIts8P_w)
+[渲染原理](https://juejin.cn/post/7116736167906639886)
 [浏览器基本原理与实现](https://segmentfault.com/a/1190000040896436)
 [内存泄露](https://juejin.cn/post/6947841638118998029)
 [跨域](https://segmentfault.com/a/1190000011145364)
@@ -113,6 +149,9 @@
 ## 日志
 [前端日志在web端的实现](https://mp.weixin.qq.com/s/ucRC4WvfKbvBhypw3Cjbmg)
 ## 埋点监控
+[SourceMap 与前端异常监控](https://mp.weixin.qq.com/s/BbvJ-OfcS7Sa-e0Zq6iF1w)
+[前端白屏监控](https://zhuanlan.zhihu.com/p/383686310)
+[字节的前端监控 SDK 是怎样设计的](https://mp.weixin.qq.com/s/9CSCWh5kHKiiNMzA1rwsXA)
 [浅谈前端埋点&监控](https://mp.weixin.qq.com/s/nrgtCK2aLw-jIksjRfLIAQ)
 [无框架埋点](https://mp.weixin.qq.com/s/TcaOUBMBBEGQoQPAjYXb_Q)
 [转转前端自动埋点核心原理揭秘](https://mp.weixin.qq.com/s/2wuOslzPKPXHEhgeJj6wVQ)
@@ -125,6 +164,7 @@
 [前端上传监控数据的4个解决方案](https://juejin.cn/post/7106365076197605413)
 [说说前端监控平台/监控SDK的架构设计和难点亮点？](https://juejin.cn/post/7108660942686126093)
 ## 组件库
+[React 组件库的技术选型与设计](https://mp.weixin.qq.com/s/MuQ4IlxleyiLX6AG9CJ1ww)
 [编写高质量的React和Vue组件](https://juejin.cn/post/7123961170188304391)
 [记一次搭建业务平台组件库的过程](https://mp.weixin.qq.com/s/tomyfh3zZ2EIXAjQp4ADow)
 [组件库搭建](https://juejin.cn/post/7120893568553582622)
@@ -133,6 +173,7 @@
 ## 单点登录
 [单点登录](https://github.com/lgwebdream/FE-Interview/issues/931)
 ## 构建
+[超全面的前端新一代构建工具对比](https://mp.weixin.qq.com/s/CzfqTIEUsyuKVYe5TN-D-g)
 [webpack和vite和rollup有什么区别](https://blog.csdn.net/weixin_46759393/article/details/122912819)
 [Webpack5 新特性业务落地实战](https://mp.weixin.qq.com/s/XhBgVGQOdsR-qeZmuB_B1g)
 [Vite的快与慢](https://juejin.cn/post/7129041114174062628)
@@ -145,6 +186,17 @@
 [打包构建全流程]https://juejin.cn/post/7031546400034947108
 [webpack优化](https://juejin.cn/post/6844903924806189070)
 ## 性能优化
+[性能优化——图片压缩、加载和格式选择](https://mp.weixin.qq.com/s/IQ1Sm_pqzCOgcM59tsUlXQ)
+[得物App H5秒开优化实战](https://juejin.cn/post/7086284339364757517)
+[一顿操作，我把 Table 组件性能提升了十倍](https://juejin.cn/post/7007252464726458399)
+[使用 Performance 看看浏览器在做什么](https://mp.weixin.qq.com/s/8RQ6raSDKfxrrtCqyP8hHQ)
+[小程序性能极致优化](https://mp.weixin.qq.com/s/zJMM4SF7pc6LZPCsQfWOxw)
+[小程序性能极致优化](https://mp.weixin.qq.com/s/ejzY97L80azy06fP3UzmDw)
+[小程序网络性能优化](https://mp.weixin.qq.com/s/g2mLpWhGsrMEud-i8xD6YQ)
+[小程序独立分包](https://mp.weixin.qq.com/s/FSFcXRXhsDZwTiWGrO6BrQ)
+[深度解析 React 性能优化 API](https://mp.weixin.qq.com/s/svGYB3HvmLDMerlM50BhAg)
+[Web 性能优化：控制关键请求的优先级](https://mp.weixin.qq.com/s/P63LEMaXLMyWGYVdLiWxZw)
+[如何从 0 到 1 搭建性能检测系统](http://zoo.zhengcaiyun.cn/blog/article/performance-testing-system)
 [NextJS是什么](https://mp.weixin.qq.com/s/rH2BqV2v7O-2KYVYNaZU-Q)
 [实践指南-前端性能提升 270%](https://mp.weixin.qq.com/s/Rw3rSsEbHAra0MwNeMTlfQ)
 [虚拟列表](https://juejin.cn/post/7085941958228574215)
@@ -158,6 +210,7 @@
 [京东购物小程序购物车性能优化实践](https://mp.weixin.qq.com/s/bbWeHI3bD0csoUoZI2_H4w)
 
 ## 低代码
+[如何搭建H5/小程序多端商城低代码平台](https://mp.weixin.qq.com/s?__biz=MzI2MjcxNTQ0Nw==&mid=2247499133&idx=1&sn=d39d8cc8fe82fb33a1a4745322f3217e&scene=21#wechat_redirect)
 [从实现原理看低代码](https://zhuanlan.zhihu.com/p/451340998?utm_source=zhihu&utm_medium=social&utm_oi=49185936113664)
 [字节跳动的微组件和代码共享实践](https://mp.weixin.qq.com/s/h0wBSQWRYgcEbPMuZK91qA)
 [携程 Foxpage 前端低代码框架](https://mp.weixin.qq.com/s/E4Co7ngKXE3h5BVx2MiuoQ)
@@ -170,6 +223,8 @@
 [低代码多分支协同开发的建设与实践](https://mp.weixin.qq.com/s/DmwxL67htHfTUP1U966N-Q)
 [磁贴布局在钉钉宜搭报表设计引擎中的实现](https://mp.weixin.qq.com/s/PSTut5ahAB8nlJ9kBpBaxw)
 [基于 LowCodeEngine 的调试能力建设与实践](https://mp.weixin.qq.com/s/H8KvEOylmzLPgIuuBO0S9w)
+[多分支协同开发](https://mp.weixin.qq.com/s/DmwxL67htHfTUP1U966N-Q)
+[什么是比较好的低代码产品](https://mp.weixin.qq.com/s/si6h4uIRNDd2QGT1YsZXXQ)
 ## 测试
 [如何做前端单元测试](https://mp.weixin.qq.com/s/r4dsGEZbYR2Mf_VFltFnvw)
 [测试必须知道的事](http://zoo.zhengcaiyun.cn/blog/article/unit-testing)
@@ -182,7 +237,11 @@
 [csrf](https://tech.meituan.com/2018/10/11/fe-security-csrf.html)
 [web 应用常见安全漏洞一览](https://segmentfault.com/a/1190000018004657)
 
+## docker
+[小鲸鱼的前世今生--Docker](https://mp.weixin.qq.com/s/4aFJ7t37IwEMyq-u09Wf1g)
 ## CI/CD
+[前端场景下 CI/CD 的探索与实践](https://mp.weixin.qq.com/s/Y-i20dQgSPu86KFVC7wNTA)
+[前端部署的灵魂拷问](https://mp.weixin.qq.com/s/OaPG7hQxqGdMhLI2135Mgw)
 [docker入门](https://mp.weixin.qq.com/s/ZnwiAeKl13JkmESCB5-PxA)
 [CI/CD](https://mp.weixin.qq.com/s/Y-i20dQgSPu86KFVC7wNTA)
 [jenkins部署前端项目](https://juejin.cn/post/7102360505313918983)
@@ -191,6 +250,10 @@
 [jekins+docker构建部署react项目实战](https://mp.weixin.qq.com/s/3v8L3-hyXFO3nJ-Pfy4_yg)
 [K8S 学习笔记总结](https://juejin.cn/post/6952331691524358174)
 ## 微前端
+[抖音平台多产物代码隔离技术的实践与探索](https://mp.weixin.qq.com/s/fjeF3LLoGsPIQN4D3el67g)
+[从 0 到 1 实现浏览器端沙盒运行环境](https://mp.weixin.qq.com/s/7CD_F0hEZtYRK0fvBWb_gQ)
+[美业微前端的落地](https://mp.weixin.qq.com/s/Dzaj6ySu4bMg0qFnAteVQg)
+[字节跳动是如何落地微前端的](https://mp.weixin.qq.com/s/L9wbfNG5fTXF5bx7dcgj4Q)
 [微前端框架qiankun的沙箱方案解析](https://mp.weixin.qq.com/s/mC-u3pNH6dbtl8tePdWFbw)
 [微前端技术选型](https://juejin.cn/post/7113503219904430111)
 [将微前端做到极致-无界方案](https://mp.weixin.qq.com/s/TYRxQIvWqG5n0s-Mjfu69Q)
@@ -201,25 +264,40 @@
 [qiankun 源码](https://mp.weixin.qq.com/s/tl2ZMdXigwRSg2coeFKAaQ)
 [为iframe正名，你可能并不需要微前端](https://mp.weixin.qq.com/s/Sp2hlxUcY45-v9nlIhEOow)
 ## 设计模式
+[过度设计](https://zhuanlan.zhihu.com/p/587362654)
+[策略模式](https://mp.weixin.qq.com/s/fPIRwfAD02YKfqC6HPOLtA)
+[策略设计模式](https://mp.weixin.qq.com/s/nVlZ9V744DQUNiWBP0m8_Q)
+[当设计模式遇上 Hooks](https://mp.weixin.qq.com/s/hh4_079ee3ppjNUtIYEYgQ)
 [图解设计模式](https://mp.weixin.qq.com/s/v8QRqjDrc7m0P3npigG_4Q)
 [十种常用设计模式](https://juejin.cn/post/6953872475537014820)
 [设计模式](https://mp.weixin.qq.com/s/g1q-K5xDTV5nCB6H22L1Zg)
+[备忘录模式](https://mp.weixin.qq.com/s/6g1negmL_Q9Ga8mowGByNQ)
 ## 算法
 [数据结构与算法](https://juejin.cn/post/7094056264283471908#heading-61)
+[什么是 LRU 算法](https://juejin.cn/post/7074754596480286734)
 
 ## 编程范式
 [编程范式](https://mp.weixin.qq.com/s/eEb7EF9FcoY0XFRYAZTF9g)
+[手摸手教你实现代码规范检测工具](https://mp.weixin.qq.com/s/Hi4hvRjGb1O1EU02dfhAuw)
+[防御性编程](https://mp.weixin.qq.com/s?__biz=Mzg4MjE5OTI4Mw==&mid=2247490282&idx=1&sn=91bed0da90137744c041023b5a7816a6&scene=21#wechat_redirect)
 ## 架构设计
+[组件设计](https://mp.weixin.qq .com/s/gIPvBEFh7qGLlyVSfSs6RA)
+[前端架构师的一些思考和总结](https://juejin.cn/post/7163835739447230501)
+[umi4设计思路](https://mp.weixin.qq.com/s/FTZ93pScf3gykd39voEpng)
+[领域驱动设计(DDD)能给前端带来什么](https://mp.weixin.qq.com/s/e3At7gx87zIQNS2lH8uWEw)
+[用DDD(领域驱动设计)和ADT(代数数据类型)提升代码质量](https://mp.weixin.qq.com/s/UaJ56G_Vdx6__6ximfP47A)
 [对前端架构的理解 - 分层与抽象](https://mp.weixin.qq.com/s/5TfAoS6nuFalfZuQ2Fv3_w)
 [react领域驱动设计](https://hqwuzhaoyi.github.io/2021/01/14/74.HookDDD/)
-[领域驱动设计能给前端带来什么](https://mp.weixin.qq.com/s/e3At7gx87zIQNS2lH8uWEw)
+[领域驱动设计能给前端带来什么](://mp.weixin.qq.com/s/e3At7gx87zIQNS2lH8uWEw)
 [前端架构之 React 领域驱动设计](https://mp.weixin.qq.com/s/DW8Np1zzFttIxrHDDkxOog)
 [领域驱动设计](https://mp.weixin.qq.com/s/DW8Np1zzFttIxrHDDkxOog)
 [浅谈软件开发架构模式](https://mp.weixin.qq.com/s/96a5ehH7hgeWIbyAOxsQYA)
+[底层构建工具重构之路](https://mp.weixin.qq.com/s/p9QX-iO7FCuh9HxWtt5PHQ)
 ## 团队
 [前端项目负责人知识图谱总结](https://mp.weixin.qq.com/s/K5LYeK93v1ZAU8mjbBYp9w)
 [如何做一场高质量的分享](https://mp.weixin.qq.com/s/Uwia82XlTMHPcvJ8QpPbSg)
 [团队前端规范](https://juejin.cn/post/7085257325165936648)
+[我是如何带领团队从零到一建立前端规范的](https://juejin.cn/post/7085257325165936648)
 [大数据前端生存指南](http://zoo.zhengcaiyun.cn/blog/article/big-data)
 [如何编写技术文档](http://zoo.zhengcaiyun.cn/blog/article/web-docsify)
 
@@ -230,7 +308,36 @@
 [spectrum]https://github.com/withspectrum/spectrum
 [sentry]https://github.com/getsentry/sentry
 
-## 其他
+## Three.js & 可视化
+[d3.js力导向图原理](https://mp.weixin.qq.com/s/yLSaWn32T7FQ66fiDNJfBg)
+[3D智慧城市开发](https://mp.weixin.qq.com/s/Yz8uppQYvGVp5BBmmbU82Q)
+[使用 ThreeJS 还原「流浪气球」](https://mp.weixin.qq.com/s/CD_xw4446OgGcqwjAfYVRg)
+[教你用 three.js 写一个炫酷的3D登陆页面](https://mp.weixin.qq.com/s/1C_LH7MXHdA4LfP4FYXLHw)
+[Three.js 实现 2022 冬奥主题 3D 趣味页面](https://mp.weixin.qq.com/s/i64GHmdIArAF_22afQb71g)
+[使用 Three.js 实现跳一跳游戏](https://mp.weixin.qq.com/s/nAyZQzczS07xPPnOxjhhlQ)
+[使用Three.js实现炫酷的赛博朋克风格3D数字地球大屏](https://mp.weixin.qq.com/s/yEXQTg2d8Z6YP9ZKxpewRQ)
+[[three]用js简单实现一个类似《七圣召唤》的掷骰子](https://mp.weixin.qq.com/s/sMkmcZrPjjlYBDX7MkJpdw)
+
+## 其他 
+[跨端技术揭秘](https://zhuanlan.zhihu.com/p/609480548)
+[VebRTC+Tensorflow.js在运动健康类项目中的前端应用](https://mp.weixin.qq.com/s/alck55e0Q6bBJWFuoy_Y3Q)
+[开发质量](https://mp.weixin.qq.com/s/6i3oXMTf_-GDGLuSbB47gA)
+[AB实验样本量计算](https://mp.weixin.qq.com/s/WpYTW0ypmrEEJSn2ayGRtQ)
+[前端开发调试最佳实践](https://juejin.cn/post/7055496557038141476)
+[如何让 Vue、React 代码的调试变得更爽](https://juejin.cn/post/7071219293249077256)
+[常见垃圾回收算法与 JS GC 原理](https://mp.weixin.qq.com/s/KZsgQxlrsfYMvJejbZqGHw)
+[DevTools 实现原理与性能分析实战](https://mp.weixin.qq.com/s/H8iahg5WUOHXeRzvf0R01w)
+[脚手架思路解析](https://juejin.cn/post/6879265583205089287)
+[浏览器插件开发](https://juejin.cn/post/7035782439590952968)
+[网站图片资源抓取](https://mp.weixin.qq.com/s/GE64ZBmMWg0bNR9why-GjQ)
+[什么是技术一号位](https://mp.weixin.qq.com/s/8d0AOo9-yhlUkJYb3NLGMQ)
+[在页面关闭时，前端上传监控数据的4个解决方案](https://mp.weixin.qq.com/s/sLnP6JK0Y_-KKh6XgdbiDA)
+[关于前端主题切换的思考和现代前端样式的解决方案落地](https://mp.weixin.qq.com/s/VPHBNxI-N0l6uMBgeacjyg)
+[聊聊依赖管理 ](https://mp.weixin.qq.com/s/9JCs3rCmVuGT3FvKxXMJwg)
+[浅谈文档的实时协同编辑](https://mp.weixin.qq.com/s/Ba-3fMQXNXqIzVTjVUrWtQ)
+[熟悉事件循环？那谈谈为什么会分为宏任务和微任务](https://mp.weixin.qq.com/s/-cHJa8k3Mk7jtYzKeZlj-w)
+[业务前端该如何突围](https://mp.weixin.qq.com/s/Yn4m0CtO5VBnRmK8b4pj2g)
+[如何编写前端设计文档](https://mp.weixin.qq.com/s/jtVF4JgfyqtpAYjgrvjNiQ)
 [如何写前端技术方案文档](https://mp.weixin.qq.com/s/uK96Q0BIrkUX_Z4m4Q-Qjw)
 [commit 规范](https://mp.weixin.qq.com/s/SZncJ1nPaXbNU-mK-JSb9g)
 [请设计一个不能操作 DOM 和调接口的环境](https://mp.weixin.qq.com/s/SRNt3V1CCtyYgQSc6QSjZA)
@@ -244,6 +351,7 @@
 [项目管理](http://zoo.zhengcaiyun.cn/blog/article/project-manage-ablout)
 
 ## 面试
+[正确介绍自己的项目，终于不用害怕面试了](https://mp.weixin.qq.com/s/BR1JhnoHTOGKMlCJbjVp8Q)
 [面试]https://segmentfault.com/a/1190000017049146?utm_source=sf-backlinks
 [面试](https://www.yuque.com/u191126/oe15yv/oc1otp)
 [技术选型](https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/74.%E7%B2%BE%E8%AF%BB%E3%80%8A12%20%E4%B8%AA%E8%AF%84%E4%BC%B0%20JS%20%E5%BA%93%E4%BD%A0%E9%9C%80%E8%A6%81%E5%85%B3%E5%BF%83%E7%9A%84%E4%BA%8B%E3%80%8B.md)

@@ -482,7 +482,7 @@ onload是DOM事件，onDOMContentLoaded是HTML5事件
 onload事件会被阻塞，而onDOMContentLoaded不会
 onDOMContentLoaded执行时间比onload早
 ## defer和async的区别，以及它们的加载和执行时机
-1.async和defer的执行时机不同,async是在加载完后立即执行,执行的过程仍会阻塞后续html的解析。defer是在html解析完,DomCOntentLoaded之前执行。
+1.async和defer的执行时机不同,async是在加载完后立即执行,执行的过程仍会阻塞后续html的解析。defer是在html解析完,DomContentLoaded之前执行。
 2.asyny不能保证script标签的执行顺序(谁先加载完谁先执行),async在html解析完之后按顺序执行
 
 ## xss和csrf的概念和防御方式

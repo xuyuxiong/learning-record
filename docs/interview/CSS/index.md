@@ -7,7 +7,7 @@ CSS的和模型有两种：标准盒子模型和IE盒子模型
 - IE盒子模型：盒子实际总宽高=内容的宽高width\height（content+border+padding）+ margin
 如何设置盒模型
 可以通过设置box-sizing的值来改变盒模型
-- box-sizing: padding-box为标准盒子模型
+- box-sizing: content-box为标准盒子模型
 - box-sizing: border-box为IE盒模型
 box-sizing的应用场景在于是否想让子元素因为padding和border溢出
 ## BFC&块级格式化上下文

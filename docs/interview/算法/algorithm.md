@@ -106,7 +106,7 @@ let deepTraversal3 = (node) => {
       const children = item.children;
       nodes.push(item);
       for (let i = 0; i < children.length; i++) {
-        stack.push[children[i]];
+        stack.push(children[i])
       }
     }
   }
@@ -385,17 +385,18 @@ function zeroMove(array) {
 返回 [0, 1]
 
 ```js
-function sum(arr, target) {
-  const res = [];
-  for (let i = 0; i < arr.length; i++) {
-    const a = target - arr[i];
-    const index = arr.indexOf(a, i);
-    if (index >= 0) {
-      res.push(i, index);
-    }
+var twoSum = function(nums, target) {
+  const map = new Map()
+  for(let i = 0; i < nums.length; i ++) {
+      const result = target - nums[i]
+      if (map.has(result)) {
+          return [map.get(result), i]
+      } else {
+          map.set(nums[i], i)
+      }
   }
-  return res;
-}
+  return []
+};
 ```
 
 ## 用 JavaScript 写一个函数，输入 int 型，返回整数逆序后的字符串。如：输入整型 1234，返回字符串“4321”。要求必须使用递归函数调用，不能用全局变量，输入函数必须只有一个参数传入，必须返回字符串。
@@ -675,6 +676,7 @@ class LinkList {
 比如 55，各位可能产生的 1 是 6 个(1, 11, 21, 31, 41, 51), 十位 5 可能产生的是 1 是 10 个，(10-19,这里的 11 只计算的十位的 1)
 
 比如 222，个位产生的 1 是 23 个(1,11,21,...221,只关注个位),十位 2 可能产生的 1 是 30 个，百位 2 产生的是 100 个
+
 以此类推，每一位数字可能产生的 1 的个数跟他的高位部分和地位部分相关
 其中 0 和 1 需要特殊处理，代码如下：
 
@@ -1174,7 +1176,7 @@ function merge(arr1, arr2) {
     if (arr1[0] < arr2[0]) {
       result.push(arr1.shift())
     } else {
-      return.push(arr2.shift())
+      result.push(arr2.shift())
     }
   }
   return result.concat(arr1).concat(arr2)
@@ -1240,22 +1242,22 @@ function f1 (arr,count){
     let resArr = [];
     let current = 0;
     for (let i = 0; i < count-1; i++) {
-        if(current + arr[arr.length-1]/2 < avg && i){
-            arr.pop();
-            resArr[i-1].push(arr[arr.length-1]);
+      if (current + arr[arr.length-1]/2 < avg && i){
+        arr.pop();
+        resArr[i-1].push(arr[arr.length-1]);
+      }
+      current = 0;
+      resArr[i] = [];
+      arr.forEach((item,index) => {
+        current += item;
+        arr.splice(index,1);
+        resArr[i].push(item);
+        if(current > avg){
+          current -= item;
+          arr.splice(index,0,item);
+          resArr[i].pop();
         }
-        current = 0;
-        resArr[i] = [];
-        arr.forEach((item,index) => {
-            current += item;
-            arr.splice(index,1);
-            resArr[i].push(item);
-            if(current > avg){
-                current -= item;
-                arr.splice(index,0,item);
-                resArr[i].pop();
-            }
-        })
+      })
     }
     resArr[count-1] = arr;
     return resArr
@@ -1494,7 +1496,6 @@ function mergeSort(head) {
         let slower = getCenter(head);
         let nxt = slower.next;
         slower.next = null;
-        console.log(head, slower, nxt);
         const left = mergeSort(head);
         const right = mergeSort(nxt);
         head = merge(left, right);
@@ -1740,7 +1741,6 @@ var maxEnvelopes = function(envelopes) {
     for (let [key, value] of envelopes) {
       LISArr.push(value);
     }
-    console.log( LISArr);
     return LIS(LISArr);
 };
 function LIS(arr) {
@@ -1856,7 +1856,6 @@ var findMedianSortedArrays = function(nums1, nums2) {
     }
     newArr = newArr.concat(i < m ? nums1.slice(i) : nums2.slice(j));
     const len = newArr.length;
-    console.log(newArr)
     if (len % 2 === 0) {
         return (newArr[len / 2] + newArr[len / 2 - 1]) / 2;
     } else {
@@ -2055,9 +2054,9 @@ var deleteNode = function(root, key) {
         if (root.left == null) return root.right;
         if (root.right == null) return root.left;
         if (root.left != null && root.right != null)  {
-            let target = getMinTreeMaxNode(root.left);
+            let target = getMinTreeMaxNode(root.right);
             root.val = target.val;
-            root.left = deleteNode(root.left, target.val);
+            root.right = deleteNode(root.right, target.val);
         }
     }
     if (root.val < key) {
@@ -2068,8 +2067,8 @@ var deleteNode = function(root, key) {
     return root;
 };
 function getMinTreeMaxNode(root) {
-    if (root.right == null) return root;
-    return getMinTreeMaxNode(root.right);
+    if (root.left == null) return root;
+    return getMinTreeMaxNode(root.left);
 }
 ```
 ## 完全二叉树的节点个数【二叉树】
@@ -2318,13 +2317,13 @@ var isSubsequence = function(s, t) {
     for (let i = 0; i < s.length; i++) {
         if (hash[s[i]]) {
             const index = binarySearch(hash[s[i]], lastMaxIndex);
-            console.log('index', index, hash[s[i]]);
             if (index === -1) return false;
             lastMaxIndex = hash[s[i]][index] + 1;
         } else return false;
     }
     return true;
 };
+// abc  awbeabc
 function binarySearch(array, targetIndex) {
     let left = 0, right = array.length;
     while (left < right) {
@@ -2359,11 +2358,11 @@ function leftBound(nums, target) {
     while (left <= right) {
         let mid = Math.floor(left + (right - left) / 2);
         if (nums[mid] === target) {
-            right = mid - 1;
+          right = mid - 1;
         } else if (nums[mid] < target) {
-            left = mid + 1;
+          left = mid + 1;
         } else if (nums[mid] > target) {
-            right = mid - 1;
+          right = mid - 1;
         }
     }
     if (left >= nums.length || nums[left] !== target) {
@@ -2442,6 +2441,10 @@ var coinChange = function(coins, amount) {
   }
   return dp[amount] === amount + 1 ? -1 : dp[amount];
 };
+
+[1, 2, 5]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
 
 ```
 ## 最长公共子序列【动态规划】
@@ -2563,6 +2566,17 @@ var maxSubArray = function(nums) {
 【面试真题】💁 买卖股票的最佳时机【动态规划】
 
 👉 【LeetCode 直通车】：121 买卖股票的最佳时机（简单）【面试真题】
+```js
+var maxProfit = function(prices) {
+  if (prices.length === 0) return 0
+  let max = 0, min = prices[0]
+  for(let p of prices) {
+    min = Math.min(min, p)
+    max = Math.max(max, p - min)
+  }
+  return max
+}
+```
 👉 【LeetCode 直通车】：122 买卖股票的最佳时机 II（简单）
 👉 【LeetCode 直通车】：123 买卖股票的最佳时机 III（困难）
 👉 【LeetCode 直通车】：188 买卖股票的最佳时机IV（困难）
@@ -2822,19 +2836,22 @@ MinStack.prototype.getMin = function() {
  * @param {number[]} nums
  * @return {number[]}
  */
-var nextGreaterElements = function(nums) {
-    let ans = [];
-    let stack = new Stack();
-    const n = nums.length;
-    for (let i = 2 * n - 1; i >= 0; i--) {
-        while (!stack.isEmpty() && stack.top() <= nums[i % n]) {
+var nextGreaterElement = function(nums1, nums2) {
+    const map = new Map();
+    const stack = [];
+    for (let i = nums2.length - 1; i >= 0; --i) {
+        const num = nums2[i];
+        while (stack.length && num >= stack[stack.length - 1]) {
             stack.pop();
         }
-        ans[i % n] = stack.isEmpty() ? -1 : stack.top();
-        stack.push(nums[i % n]);
+        map.set(num, stack.length ? stack[stack.length - 1] : -1);
+        stack.push(num);
     }
-    return ans;
-};
+    const res = new Array(nums1.length).fill(0).map((_, i) => map.get(nums1[i]));
+    return res;
+};  
+
+
 class Stack {
     constructor() {
         this.count = 0;

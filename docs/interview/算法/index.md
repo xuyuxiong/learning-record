@@ -211,9 +211,65 @@ var minCostClimbingStairs = function(cost) {
 
 ```
 ## 实现一个函数, fetchWithRetry 会自动重试3次，任意一次成功直接返回
+```js
+const fetchWithRetry = async (
+  url, 
+  options, 
+  retryCount = 0,
+) => {
+  const { MAXRET = 3, ...remainingOptions } = options;
+  try {
+    return await fetch(url, remainingOptions);
+  } catch (error) {
+    // 如果重试次数没有超过，那么重新调用
+    if (retryCount < maxRetries) {
+      return fetchWithRetry(url, options, retryCount + 1);
+    }
+    // 超过最大重试次数
+    throw error;
+  }
+}
 
+// 补充超时和取消
+// 创建一个 reject 的 promise 
+// `timeout` 毫秒
+const throwOnTimeout = (timeout) => 
+  new Promise((_, reject) => 
+    setTimeout(() => 
+     reject(new Error("Timeout")),
+     timeout
+    ),
+  );
+
+const fetchWithTimeout = (
+  url, 
+  options = {},
+) => {
+  const { timeout, ...remainingOptions } = options;
+  // 如果超时选项被指定，那么 fetch 调用和超时通过 Promise.race 竞争
+  if (timeout) {
+    return Promise.race([
+      fetch(url, remainingOptions), 
+      throwOnTimeout(timeout),
+    ]);
+  }
+  return fetch(url, remainingOptions);
+}
+
+// 取消
+const fetchWithCancel = (url, options = {}) => {
+  const controller = new AbortController();
+  const call = fetch(
+    url, 
+    { ...options, signal: controller.signal },
+  );
+  const cancel = () => controller.abort();
+  return [call, cancel];
+};
+
+```
 ## 64个运动员, 8个跑道, 如果要选出前四名, 至少跑几次?
-
+最少10次，最多11次
 ## 93复原ip地址
 ```js
 var restoreIpAddresses = function(s) {

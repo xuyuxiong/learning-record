@@ -599,12 +599,12 @@ var Flyweight = function() {
       }
     }
   }
-}
+}()
 
 var paper = 0, num = 5, len = article.length;
 for(var i = 0; i < 5; i++) {
   if (article[i]) {
-    Flyweight.getDiv.innterHTML = article[i]
+    Flyweight.getDiv().innterHTML = article[i]
   }
 }
 document.getElementById('next_page').onclick = function() {
@@ -899,7 +899,7 @@ var viewCommand = (function() {
   }
   return function execute(msg){
     msg.param = Object.prototype.toString.call(msg.param) === '[object Array]' ? msg.param : [msg.param]
-    Action[msg.command].appley(Action, msg.param)
+    Action[msg.command].apply(Action, msg.param)
   }
 })()
 
@@ -1118,7 +1118,7 @@ A.fn = A.prototype = {
   sort: [].sort,
   splice: [].splice
 }
-A.fn.extend = A.fn.extend = function() {
+A.extend = A.fn.extend = function() {
   var i = 1, len = arguments.length, target = arguments[0], j;
   if (i == len) {
     target = this;
@@ -1314,7 +1314,7 @@ BaseLocalStorage.prototype = {
     try {
       value = that.storage.getItem(key)
     } catch(e) {
-      return = {
+      result = {
         status: that.status.FAILURE,
         value: null
       }

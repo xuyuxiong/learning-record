@@ -42,7 +42,7 @@ function find(element) {
 function remove(element) {
   var foundAt = this.find(element)
   if (foundAt > -1) {
-    this.dataStore.splice(fontAt, 1)
+    this.dataStore.splice(foundAt, 1)
     -- this.listSize;
     return true;
   }
@@ -220,6 +220,10 @@ function empty() {
 ```
 基数排序
 ```js
+var queues = []
+for(var i = 0; i < 10; i++) {
+  queues[i] = new Queue()
+}
 function distribute(nums, queues, n, digit){
   for(var i = 0; i < n; ++ i) {
     if (digit == 1) {
@@ -317,6 +321,22 @@ function insert(newElement, item) {
   newNode.next = current.next;
   newNode.previous = current;
   current.next = newNode;
+}
+function remove(item) {
+  var currNode = this.find(item)
+  if (!(currNode.next == null)) {
+    currNode.previous.next = currNode.next;
+    currNode.next.previous = currNode.previous
+    currNode.next = null
+    currNode.previous = null;
+  }
+}
+function findLast() {
+  var currNode = this.head;
+  while(!(currNode.next == null)) {
+    currNode = currNode.next;
+  }
+  return currNode
 }
 ```
 ## 字典
@@ -561,7 +581,7 @@ function insert(data) {
         current = current.left
         if (current == null) {
           parent.left = n;
-          brea;
+          break;
         }
       } else {
         current = current.right;
@@ -638,7 +658,7 @@ function remove(data) {
   root = removeNode(this.root, data)
 }
 
-functjion removeNode(node, data) {
+function removeNode(node, data) {
   if (node == null) {
     return null;
   }
@@ -809,21 +829,22 @@ function insertionSort(arr) {
   return arr
 }
 // 希尔排序
-function shellSort(arr) {  
-  var len = arr.length, gap = 1, j;  
-  while(gap < len/3) { // 动态定义间隔序列  
-    gap =gap*3+1;  
-  }   
-  for(gap; gap > 0; gap = Math.floor(gap / 3)) {
-    for(var i = gap; i < len; i++) {
-      while((j = i - gap) >= 0 && arr[j] > arr[i]) {
-        [arr[j], arr[i]] = [arr[i], arr[j]]
-        j -= gap
+function shellSort(arr) {
+  let len = arr.length;
+  // gap 即为增量
+  for (let gap = Math.floor(len / 2); gap > 0; gap = Math.floor(gap / 2)) {
+    for (let i = gap; i < len; i++) {
+      let j = i;
+      let current = arr[i];
+      while(j - gap >= 0 && current < arr[j - gap]) {
+        arr[j] = arr[j - gap];
+        j = j - gap;
       }
+      arr[j] = current;
     }
-  } 
-  return arr;
+  }
 }
+ 
 // 归并排序
 function mergeSort(arr) {
   if (arr.length <= 1) return arr
@@ -872,6 +893,7 @@ function findMin(arr) {
   }
   return min;
 }
+
 // 查找最大值
 function findMax(arr) {
   var max = arr[0]
@@ -882,6 +904,7 @@ function findMax(arr) {
   }
   return max;
 }
+
 // 二分查找
 function binSearch(arr, data) {
   var upperBound = arr.length - 1
